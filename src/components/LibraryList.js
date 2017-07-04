@@ -1,33 +1,20 @@
 import React, { Component } from 'react';
-import { ListView }  from 'react-native';
+import { View, Text }  from 'react-native';
 import { connect } from 'react-redux';
-import ListItem from './ListItem';
+import * as actions from '../actions';
 
 class LibraryList extends Component {
-    componentWillMount() {
-        // copy paste code.
-        const ds = new ListView.DataSource({
-            rowHasChanged: (r1, r2) => r1 !== r2
-        });
-        this.dataSource = ds.cloneWithRows(this.props.libraries);
-    }
-    renderRow(library) {
-        return <ListItem library={library} />
-    }
     render() {
-        // console.log(this.props.libraries);
         return(
-            <ListView
-                dataSource={this.dataSource}
-                renderRow={this.renderRow}
-            />
+            <View>
+                <Text>LibraryList</Text>
+            </View>
         );
     }
 }
-// take globla state to local component in props
+// Take globla state to local component in props
 const mapStateToProps = state => {
-    // console.log(state);
-    return { libraries: state.libraries };
+    return { props: state.attribute };
 }; 
 
-export default connect(mapStateToProps)(LibraryList);
+export default connect(mapStateToProps, actions)(LibraryList);
