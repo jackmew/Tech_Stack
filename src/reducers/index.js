@@ -1,9 +1,6 @@
-import data from './LibraryList.json';
-import { combineReducers } from 'redux'; 
+import { combineReducers } from 'redux';
+import LibraryReducer from './LibraryReducer';
 
-// collect reducers
 export default combineReducers({
-    // name to show on state
-    reducer1: () => { return data; }
+    libraries: LibraryReducer
 });
-
